@@ -1,0 +1,156 @@
+package core;
+
+import java.awt.Graphics2D;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+
+import pieces.Bishop;
+import pieces.King;
+import pieces.Knight;
+import pieces.Pawn;
+import pieces.Queen;
+import pieces.Rook;
+
+public class Player {
+	private ArrayList <Piece> pieces;
+	private PieceColor piececolor;
+	private TileManager tilemanager;
+	
+	public Player(PieceColor piececolor, TileManager tilemanager) {
+		this.piececolor = piececolor;
+		this.tilemanager = tilemanager;
+		pieces = new ArrayList<Piece>(16);
+		Tile tile;
+		Piece piece;
+		
+		if(piececolor == PieceColor.White) {
+			ImageIcon w_rook = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/w-rook.png");
+			ImageIcon w_knight = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/w-knight.png");
+			ImageIcon w_bishop = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/w-bishop.png");
+			ImageIcon w_queen = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/w-queen.png");
+			ImageIcon w_king = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/w-king.png");
+			ImageIcon w_pawn = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/w-pawn.png");
+			
+			//	Rooks
+			tile = tilemanager.getTile(57);
+			piece = new Rook(w_rook, tile, PieceColor.White, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			tile = tilemanager.getTile(64);
+			piece = new Rook(w_rook, tile, PieceColor.White, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			//	Bishops 
+			tile = tilemanager.getTile(58);
+			piece = new Bishop(w_bishop, tile, PieceColor.White, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			tile = tilemanager.getTile(63);
+			piece = new Bishop(w_bishop, tile, PieceColor.White, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			//	Knights
+			tile = tilemanager.getTile(59);
+			piece = new Bishop(w_knight, tile, PieceColor.White, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			tile = tilemanager.getTile(62);
+			piece = new Bishop(w_knight, tile, PieceColor.White, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			//	Queen
+			tile = tilemanager.getTile(60);
+			piece = new Queen(w_queen, tile, PieceColor.White, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			//	King
+			tile = tilemanager.getTile(61);
+			piece = new Queen(w_king, tile, PieceColor.White, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			for(int i=0; 8>i; i++) {
+				tile = tilemanager.getTile(49+i);
+				piece = new Pawn(w_pawn, tile, PieceColor.White, tilemanager);
+				pieces.add(piece);
+				tile.enterPiece(piece);
+			}
+		}
+		else if(piececolor == PieceColor.Black) {
+			ImageIcon b_rook = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/b-rook.png");
+			ImageIcon b_knight = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/b-knight.png");
+			ImageIcon b_bishop = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/b-bishop.png");
+			ImageIcon b_queen = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/b-queen.png");
+			ImageIcon b_king = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/b-king.png");
+			ImageIcon b_pawn = new ImageIcon("/home/emil/Downloads/ChessPixelArt/pieces/b-pawn.png");
+			
+			//	Rooks
+			tile = tilemanager.getTile(1);
+			piece = new Rook(b_rook, tile, PieceColor.Black, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			tile = tilemanager.getTile(8);
+			piece = new Rook(b_rook, tile, PieceColor.Black, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			//	Bishops 
+			tile = tilemanager.getTile(2);
+			piece = new Bishop(b_bishop, tile, PieceColor.Black, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			tile = tilemanager.getTile(7);
+			piece = new Bishop(b_bishop, tile, PieceColor.Black, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			//	Knights
+			tile = tilemanager.getTile(3);
+			piece = new Bishop(b_knight, tile, PieceColor.Black, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			tile = tilemanager.getTile(6);
+			piece = new Bishop(b_knight, tile, PieceColor.Black, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			//	Queen
+			tile = tilemanager.getTile(4);
+			piece = new Queen(b_queen, tile, PieceColor.Black, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			//	King
+			tile = tilemanager.getTile(5);
+			piece = new Queen(b_king, tile, PieceColor.Black, tilemanager);
+			pieces.add(piece);
+			tile.enterPiece(piece);
+			
+			for(int i=0; 8>i; i++) {
+				tile = tilemanager.getTile(9+i);
+				piece = new Pawn(b_pawn, tile, PieceColor.Black, tilemanager);
+				pieces.add(piece);
+				tile.enterPiece(piece);
+			}
+			
+		}
+	}
+	
+	public void draw(Graphics2D graphics) {
+		for(Piece piece : pieces) {
+			piece.draw(graphics);
+		}
+	}
+	
+}
