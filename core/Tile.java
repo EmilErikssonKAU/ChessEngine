@@ -56,6 +56,10 @@ public class Tile {
 		
 	}
 	
+	public boolean getSelected() {
+		return selected;
+	}
+	
 	public void enterPiece(Piece piece) {
 		occuppier = piece;
 	}
@@ -76,12 +80,16 @@ public class Tile {
 		availableMove = bool;
 	}
 	
+	public boolean getAvailableMove() {
+		return availableMove;
+	}
 	
 	public void draw(Graphics2D graphics){
 		if(selected) {
 			graphics.setColor(Color.cyan);
 			Piece p = returnOccuppier();
-			p.showAvailableMoves();
+			if(p != null)
+				p.showAvailableMoves();
 		}
 		else if(availableMove) {
 			graphics.setColor(Color.green);

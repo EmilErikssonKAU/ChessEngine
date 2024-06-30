@@ -10,25 +10,16 @@ import core.Tile;
 import core.TileManager;
 
 public class Pawn extends Piece{
-	private boolean firstMove;
 
 	public Pawn(ImageIcon image, Tile tile, PieceColor piececolor, TileManager tilemanager) {
 		super(image, tile, piececolor, tilemanager);
-		firstMove = true;
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void showAvailableMoves() {
 		int currentTileNumber = tile.getTileNumber();
 		int nextTileNumber;
-		System.out.println("HEHEHE");
 		
 		if(piececolor == piececolor.White) {
 			//	one step forward

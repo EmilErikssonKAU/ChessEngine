@@ -50,13 +50,7 @@ public class TileManager {
 		Tile targetTile;
 		for(Tile tile : tiles) {
 			if(tile.getBounds().contains(new Point(x,y))) {
-				targetTile = tile;
-//				for(Tile t: tiles) {
-//					if(t.)
-//					tile.setHovered(true);
-//				}
 				tile.setHovered(true);
-				
 			}
 			else
 				tile.setHovered(false);
@@ -64,27 +58,74 @@ public class TileManager {
 	}
 	
 	public void checkClick(int x, int y) {
+		//	check if click is on available move
+		for(Tile tile : tiles) {
+			if(tile.getBounds().contains(new Point(x,y))){
+				if(tile.getAvailableMove()) {
+					Tile t = getSelectedTile();
+	
+					// no tile is selected
+					if(t == null)
+						return;
+					
+					Piece p = t.returnOccuppier();
+					
+					// no piece in tile, probably unneccesary
+					if(p == null)
+						return;
+					
+					p.move(tile);
+					t.exitPiece();
+					deselectAll();
+					return;
+					
+				}
+			}
+		}
+		//	check if click is on friendly piece
 		for(Tile tile: tiles) {
-			if(tile.getBounds().contains(new Point(x,y)))
-				checkForFriendlyPiece(tile);
+			if(tile.getBounds().contains(new Point(x,y))) {
+				if(checkForFriendlyPiece(tile))
+					selectTile(tile);
+			}			
 			else
 				tile.setSelected(false);
 				
 		}
 	}
 	
-	public void checkForFriendlyPiece(Tile tile) {
+	public boolean checkForFriendlyPiece(Tile tile) {
 		if(tile.returnOccuppier() == null)
-			;
+			return false;
 		else if(tile.returnOccuppier().returnPieceColor() == PieceColor.White)
-			selectTile(tile);
+			return true;
 		else
-			;
+			return false;
 		
+	}
+	
+	public void deselectAll() {
+		for(Tile tile: tiles) {
+			tile.setSelected(false);
+			tile.setAvailableMove(false);
+		}
 	}
 	
 	public void selectTile(Tile tile) {
 		tile.setSelected(true);
+	}
+	
+	public Tile getSelectedTile() {
+		// return Tile; if there is selected tile
+		// return null; if there is no selected tile
+		
+		for(Tile t: tiles) {
+			if(t.getSelected()) {
+				return t;
+			}
+		}
+		//	no selected tile
+		return null;
 	}
 	
 	public void draw(Graphics2D graphics) {

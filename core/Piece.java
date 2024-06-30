@@ -11,12 +11,14 @@ public abstract class Piece {
 	protected PieceColor piececolor;
 	protected TileManager tilemanager;
 	protected ArrayList<Tile> availableMoves;
+	protected boolean firstMove;
 	
 	public Piece(ImageIcon image, Tile tile, PieceColor piececolor, TileManager tilemanager) {
 		this.image = image;
 		this.tile = tile;
 		this.piececolor = piececolor;
 		this.tilemanager = tilemanager;
+		firstMove = true;
 		availableMoves = new ArrayList<Tile>();
 	}
 	
@@ -40,6 +42,10 @@ public abstract class Piece {
 	
 	public abstract void showAvailableMoves();
 
-	public abstract void move();
+	public void move(Tile t) {
+		tile = t;
+		tile.enterPiece(this);
+		firstMove = false;
+	}
 	
 }
