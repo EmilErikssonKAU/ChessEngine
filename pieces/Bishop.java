@@ -17,7 +17,53 @@ public class Bishop extends Piece{
 
 	@Override
 	public void showAvailableMoves() {
-		// TODO Auto-generated method stub
+		int currentTileNumber = tile.getTileNumber();
+		int nextTileNumber;
+		
+		//left-upward
+		for(int i=1; i<8; i++){
+			nextTileNumber = currentTileNumber - i*9;
+			if(nextTileNumber > 0 && nextTileNumber % 8 != 0  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;			
+		}
+		
+		//right-upward
+		for(int i=1; i<8; i++) {
+			nextTileNumber = currentTileNumber - i*7;
+			if(nextTileNumber > 0 && nextTileNumber % 8 != 1  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;	
+		}
+		
+		//left-downward
+		for(int i=1; i<8; i++){
+			nextTileNumber = currentTileNumber + i*9;
+			if(nextTileNumber < 65 && nextTileNumber % 8 != 0  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;			
+		}
+		
+		//right-downward
+		for(int i=1; i<8; i++){
+			nextTileNumber = currentTileNumber + i*7;
+			if(nextTileNumber < 65 && nextTileNumber % 8 != 0  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;			
+		}		
+		
+		
+		for(Tile tile: availableMoves) {
+			tile.setAvailableMove(true);
+		}
 		
 	}
 
