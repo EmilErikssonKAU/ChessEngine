@@ -51,10 +51,11 @@ public class TileManager {
 		for(Tile tile : tiles) {
 			if(tile.getBounds().contains(new Point(x,y))) {
 				targetTile = tile;
-				for(Tile t: tiles) {
-					if(t.)
-					tile.setHovered(true);
-				}
+//				for(Tile t: tiles) {
+//					if(t.)
+//					tile.setHovered(true);
+//				}
+				tile.setHovered(true);
 				
 			}
 			else
