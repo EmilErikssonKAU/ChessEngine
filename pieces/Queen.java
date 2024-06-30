@@ -18,7 +18,92 @@ public class Queen extends Piece{
 
 	@Override
 	public void showAvailableMoves() {
-		// TODO Auto-generated method stub
+		int currentTileNumber = tile.getTileNumber();
+		int nextTileNumber;
+		
+		//	upwards
+		for(int i=1; i<8; i++){
+			nextTileNumber = currentTileNumber - 8*i;
+			if(nextTileNumber > 0 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;
+		}
+		
+		//	downwards
+		for(int i=1; i<8; i++){
+			nextTileNumber = currentTileNumber + 8*i;
+			if(nextTileNumber < 65 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;
+		}
+		
+		//	rightwards
+		for(int i=1; i<8; i++){
+			nextTileNumber = currentTileNumber + i;
+			if(nextTileNumber % 8 != 1 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;
+		}
+		
+		//	leftwards
+		for(int i=1; i<8; i++){
+			nextTileNumber = currentTileNumber - i;
+			if(nextTileNumber % 8 != 0 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;
+		}
+		//left-upward
+		for(int i=1; i<8; i++){
+			nextTileNumber = currentTileNumber - i*9;
+			if(nextTileNumber > 0 && nextTileNumber % 8 != 0  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;			
+		}
+		
+		//right-upward
+		for(int i=1; i<8; i++) {
+			nextTileNumber = currentTileNumber - i*7;
+			if(nextTileNumber > 0 && nextTileNumber % 8 != 1  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;	
+		}
+		
+		//left-downward
+		for(int i=1; i<8; i++){
+			nextTileNumber = currentTileNumber + i*7;
+			if(nextTileNumber < 65 && nextTileNumber % 8 != 0  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;			
+		}
+		
+		//right-downward
+		for(int i=1; i<8; i++){
+			nextTileNumber = currentTileNumber + i*9;
+			if(nextTileNumber < 65 && nextTileNumber % 8 != 0  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+				availableMoves.add(tilemanager.getTile(nextTileNumber));
+			}
+			else
+				break;			
+		}			
+		
+		for(Tile tile: availableMoves) {
+			tile.setAvailableMove(true);
+		}
+		
 		
 	}
 

@@ -73,7 +73,7 @@ public class Player {
 			
 			//	King
 			tile = tilemanager.getTile(61);
-			piece = new Queen(w_king, tile, PieceColor.White, tilemanager);
+			piece = new King(w_king, tile, PieceColor.White, tilemanager);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
@@ -133,7 +133,7 @@ public class Player {
 			
 			//	King
 			tile = tilemanager.getTile(5);
-			piece = new Queen(b_king, tile, PieceColor.Black, tilemanager);
+			piece = new King(b_king, tile, PieceColor.Black, tilemanager);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
