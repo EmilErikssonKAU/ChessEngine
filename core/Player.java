@@ -2,6 +2,7 @@ package core;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 
@@ -16,10 +17,12 @@ public class Player {
 	private ArrayList <Piece> pieces;
 	private PieceColor piececolor;
 	private TileManager tilemanager;
+	private Game game;
 	
-	public Player(PieceColor piececolor, TileManager tilemanager) {
+	public Player(PieceColor piececolor, TileManager tilemanager, Game game) {
 		this.piececolor = piececolor;
 		this.tilemanager = tilemanager;
+		this.game = game;
 		pieces = new ArrayList<Piece>(16);
 		Tile tile;
 		Piece piece;
@@ -34,52 +37,52 @@ public class Player {
 			
 			//	Rooks
 			tile = tilemanager.getTile(57);
-			piece = new Rook(w_rook, tile, PieceColor.White, tilemanager);
+			piece = new Rook(w_rook, tile, PieceColor.White, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			tile = tilemanager.getTile(64);
-			piece = new Rook(w_rook, tile, PieceColor.White, tilemanager);
+			piece = new Rook(w_rook, tile, PieceColor.White, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			//	Bishops 
 			tile = tilemanager.getTile(59);
-			piece = new Bishop(w_bishop, tile, PieceColor.White, tilemanager);
+			piece = new Bishop(w_bishop, tile, PieceColor.White, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			tile = tilemanager.getTile(62);
-			piece = new Bishop(w_bishop, tile, PieceColor.White, tilemanager);
+			piece = new Bishop(w_bishop, tile, PieceColor.White, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			//	Knights
 			tile = tilemanager.getTile(58);
-			piece = new Knight(w_knight, tile, PieceColor.White, tilemanager);
+			piece = new Knight(w_knight, tile, PieceColor.White, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			tile = tilemanager.getTile(63);
-			piece = new Knight(w_knight, tile, PieceColor.White, tilemanager);
+			piece = new Knight(w_knight, tile, PieceColor.White, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			//	Queen
 			tile = tilemanager.getTile(60);
-			piece = new Queen(w_queen, tile, PieceColor.White, tilemanager);
+			piece = new Queen(w_queen, tile, PieceColor.White, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			//	King
 			tile = tilemanager.getTile(61);
-			piece = new King(w_king, tile, PieceColor.White, tilemanager);
+			piece = new King(w_king, tile, PieceColor.White, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			for(int i=0; 8>i; i++) {
 				tile = tilemanager.getTile(49+i);
-				piece = new Pawn(w_pawn, tile, PieceColor.White, tilemanager);
+				piece = new Pawn(w_pawn, tile, PieceColor.White, tilemanager, this);
 				pieces.add(piece);
 				tile.enterPiece(piece);
 			}
@@ -94,52 +97,52 @@ public class Player {
 			
 			//	Rooks
 			tile = tilemanager.getTile(1);
-			piece = new Rook(b_rook, tile, PieceColor.Black, tilemanager);
+			piece = new Rook(b_rook, tile, PieceColor.Black, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			tile = tilemanager.getTile(8);
-			piece = new Rook(b_rook, tile, PieceColor.Black, tilemanager);
+			piece = new Rook(b_rook, tile, PieceColor.Black, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			//	Bishops 
 			tile = tilemanager.getTile(3);
-			piece = new Bishop(b_bishop, tile, PieceColor.Black, tilemanager);
+			piece = new Bishop(b_bishop, tile, PieceColor.Black, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			tile = tilemanager.getTile(6);
-			piece = new Bishop(b_bishop, tile, PieceColor.Black, tilemanager);
+			piece = new Bishop(b_bishop, tile, PieceColor.Black, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			//	Knights
 			tile = tilemanager.getTile(2);
-			piece = new Knight(b_knight, tile, PieceColor.Black, tilemanager);
+			piece = new Knight(b_knight, tile, PieceColor.Black, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			tile = tilemanager.getTile(7);
-			piece = new Knight(b_knight, tile, PieceColor.Black, tilemanager);
+			piece = new Knight(b_knight, tile, PieceColor.Black, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			//	Queen
 			tile = tilemanager.getTile(4);
-			piece = new Queen(b_queen, tile, PieceColor.Black, tilemanager);
+			piece = new Queen(b_queen, tile, PieceColor.Black, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			//	King
 			tile = tilemanager.getTile(5);
-			piece = new King(b_king, tile, PieceColor.Black, tilemanager);
+			piece = new King(b_king, tile, PieceColor.Black, tilemanager, this);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			for(int i=0; 8>i; i++) {
 				tile = tilemanager.getTile(9+i);
-				piece = new Pawn(b_pawn, tile, PieceColor.Black, tilemanager);
+				piece = new Pawn(b_pawn, tile, PieceColor.Black, tilemanager, this);
 				pieces.add(piece);
 				tile.enterPiece(piece);
 			}
@@ -151,6 +154,34 @@ public class Player {
 		for(Piece piece : pieces) {
 			piece.draw(graphics);
 		}
+	}
+	
+	public void passTurn() {
+		game.nextTurn();
+	}
+	
+	public void deletePiece(Piece piece) {
+		pieces.remove(piece);
+	}
+	
+	
+	//	exclusive for the ai
+	//
+	
+	public void computeMove() {
+		Random randomGenerator = new Random();
+		Piece randomPiece;
+		
+		for(Piece p: pieces) {
+			p.showAvailableMoves();
+		}
+		
+		do {
+			randomPiece = pieces.get(randomGenerator.nextInt(pieces.size()));
+		} while(randomPiece.getNumberOfAvailableMoves() < 1);
+		
+		Tile randomMove = randomPiece.getRandomMove();
+		randomPiece.move(randomMove);
 	}
 	
 }

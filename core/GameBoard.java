@@ -7,6 +7,7 @@ import javax.swing.JComponent;
 public class GameBoard extends JComponent {
 	private Game game;
 	private TileManager tilemanager;
+	private boolean mouseEnabled;
 	
 	private final int BOARD_WIDTH_TILES = 8;
 	
@@ -14,6 +15,7 @@ public class GameBoard extends JComponent {
 		tilemanager = new TileManager(BOARD_WIDTH_TILES, this.getPreferredSize().width/BOARD_WIDTH_TILES);
 		//	(numberOfTiles, pixelWidthOfTile)
 		game = new Game(this, tilemanager);
+		mouseEnabled = true;
 	}
 	
 	@Override
@@ -32,7 +34,8 @@ public class GameBoard extends JComponent {
 	}
 	
 	public void processMouseClick(int x, int y) {
-		tilemanager.checkClick(x, y);
+		if(mouseEnabled)
+			tilemanager.checkClick(x, y);
 	}
 	
 	public void processMouseMovement(int x, int y) {
@@ -42,6 +45,14 @@ public class GameBoard extends JComponent {
 	
 	public void update() {
 		game.update();
+	}
+	
+	public void disableMouse() {
+		mouseEnabled = false;
+	}
+	
+	public void enableMouse() {
+		mouseEnabled = true;
 	}
 
 }

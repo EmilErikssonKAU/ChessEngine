@@ -2,6 +2,7 @@ package core;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 
@@ -13,12 +14,14 @@ public abstract class Piece {
 	protected ArrayList<Tile> availableMoves;
 	protected boolean firstMove;
 	protected boolean alive;
+	protected Player owner;
 	
-	public Piece(ImageIcon image, Tile tile, PieceColor piececolor, TileManager tilemanager) {
+	public Piece(ImageIcon image, Tile tile, PieceColor piececolor, TileManager tilemanager, Player owner) {
 		this.image = image;
 		this.tile = tile;
 		this.piececolor = piececolor;
 		this.tilemanager = tilemanager;
+		this.owner = owner;
 		firstMove = true;
 		alive = true;
 		availableMoves = new ArrayList<Tile>();
@@ -51,9 +54,21 @@ public abstract class Piece {
 			return false;
 	}
 	
-	public abstract void showAvailableMoves();
+	public Tile getRandomMove() {
+		Random randomGenerator = new Random();
+		Tile randomMove = availableMoves.get(randomGenerator.nextInt(availableMoves.size()));
+		return randomMove;
+		
+	}
+	
+	public int getNumberOfAvailableMoves() {
+		//	requires showAvailableMoves to be run beforehand
+		return availableMoves.size();
+	}
+	
 	
 	public void die() {
+		owner.deletePiece(this);
 		alive = false;
 	}
 
@@ -64,6 +79,9 @@ public abstract class Piece {
 		else
 			tile.enterPiece(this);
 		firstMove = false;
+		owner.passTurn();
 	}
+	
+	public abstract void showAvailableMoves();
 	
 }

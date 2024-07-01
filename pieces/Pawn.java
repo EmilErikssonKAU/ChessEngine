@@ -6,13 +6,14 @@ import javax.swing.ImageIcon;
 
 import core.Piece;
 import core.PieceColor;
+import core.Player;
 import core.Tile;
 import core.TileManager;
 
 public class Pawn extends Piece{
 
-	public Pawn(ImageIcon image, Tile tile, PieceColor piececolor, TileManager tilemanager) {
-		super(image, tile, piececolor, tilemanager);
+	public Pawn(ImageIcon image, Tile tile, PieceColor piececolor, TileManager tilemanager, Player owner) {
+		super(image, tile, piececolor, tilemanager, owner);
 		// TODO Auto-generated constructor stub
 	}
 
