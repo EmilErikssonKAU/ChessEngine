@@ -73,6 +73,15 @@ public class Tile {
 		return occuppier;
 	}
 	
+	public boolean hasFriendlyPiece(Piece p) {
+		if(occuppier == null)
+			return false;
+		else if(occuppier.isFriendly(p))
+			return true;
+		else
+			return false;
+	}
+	
 	public int getTileNumber() {
 		return tileNumber;
 	}

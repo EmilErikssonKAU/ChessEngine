@@ -40,6 +40,13 @@ public abstract class Piece {
 		
 	}
 	
+	public boolean isFriendly(Piece p) {
+		if(p.returnPieceColor() == this.returnPieceColor())
+			return true;
+		else
+			return false;
+	}
+	
 	public abstract void showAvailableMoves();
 
 	public void move(Tile t) {

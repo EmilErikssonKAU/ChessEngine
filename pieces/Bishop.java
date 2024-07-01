@@ -23,8 +23,10 @@ public class Bishop extends Piece{
 		//left-upward
 		for(int i=1; i<8; i++){
 			nextTileNumber = currentTileNumber - i*9;
-			if(nextTileNumber > 0 && nextTileNumber % 8 != 0  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+			if(nextTileNumber > 0 && nextTileNumber % 8 != 0  && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this)) {
 				availableMoves.add(tilemanager.getTile(nextTileNumber));
+				if(tilemanager.getTile(nextTileNumber).returnOccuppier() != null)
+					break;
 			}
 			else
 				break;			
@@ -33,8 +35,10 @@ public class Bishop extends Piece{
 		//right-upward
 		for(int i=1; i<8; i++) {
 			nextTileNumber = currentTileNumber - i*7;
-			if(nextTileNumber > 0 && nextTileNumber % 8 != 1  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+			if(nextTileNumber > 0 && nextTileNumber % 8 != 1  && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this)) {
 				availableMoves.add(tilemanager.getTile(nextTileNumber));
+				if(tilemanager.getTile(nextTileNumber).returnOccuppier() != null)
+					break;
 			}
 			else
 				break;	
@@ -43,8 +47,10 @@ public class Bishop extends Piece{
 		//left-downward
 		for(int i=1; i<8; i++){
 			nextTileNumber = currentTileNumber + i*7;
-			if(nextTileNumber < 65 && nextTileNumber % 8 != 0  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+			if(nextTileNumber < 65 && nextTileNumber % 8 != 0  && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this)) {
 				availableMoves.add(tilemanager.getTile(nextTileNumber));
+				if(tilemanager.getTile(nextTileNumber).returnOccuppier() != null)
+					break;
 			}
 			else
 				break;			
@@ -53,8 +59,10 @@ public class Bishop extends Piece{
 		//right-downward
 		for(int i=1; i<8; i++){
 			nextTileNumber = currentTileNumber + i*9;
-			if(nextTileNumber < 65 && nextTileNumber % 8 != 1  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+			if(nextTileNumber < 65 && nextTileNumber % 8 != 1  && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this)) {
 				availableMoves.add(tilemanager.getTile(nextTileNumber));
+				if(tilemanager.getTile(nextTileNumber).returnOccuppier() != null)
+					break;
 			}
 			else
 				break;			

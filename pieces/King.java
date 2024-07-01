@@ -22,42 +22,42 @@ public class King extends Piece{
 		
 		//forward
 		nextTileNumber = currentTileNumber - 8;
-		if(nextTileNumber > 0 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber > 0 && tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));
 		
 		//backward
 		nextTileNumber = currentTileNumber + 8;
-		if(nextTileNumber < 65 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber < 65 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));
 		
 		//rightward
 		nextTileNumber = currentTileNumber + 1;
-		if(nextTileNumber % 8 != 1 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber % 8 != 1 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));
 		
 		//leftward
 		nextTileNumber = currentTileNumber - 1;
-		if(nextTileNumber % 8 != 0 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber % 8 != 0 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));
 		
 		//left-upward
 		nextTileNumber = currentTileNumber - 9;
-		if(nextTileNumber % 8 != 0 && nextTileNumber > 0 &&tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber % 8 != 0 && nextTileNumber > 0 &&!tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));
 		
 		//right-upward
 		nextTileNumber = currentTileNumber - 7;
-		if(nextTileNumber % 8 != 1 && nextTileNumber > 0 &&tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber % 8 != 1 && nextTileNumber > 0 &&!tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));
 		
 		//left-downward
 		nextTileNumber = currentTileNumber + 7;
-		if(nextTileNumber % 8 != 0 && nextTileNumber < 65 &&tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber % 8 != 0 && nextTileNumber < 65 &&!tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));
 		
 		//right-downward
 		nextTileNumber = currentTileNumber + 9;
-		if(nextTileNumber % 8 != 1 && nextTileNumber < 65 &&tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber % 8 != 1 && nextTileNumber < 65 &&!tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));
 		
 		for(Tile tile: availableMoves) {

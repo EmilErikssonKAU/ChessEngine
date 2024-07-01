@@ -24,33 +24,33 @@ public class Knight extends Piece{
 		//	  +
 		//	1++
 		nextTileNumber = currentTileNumber - 6;
-		if(nextTileNumber > 0 && nextTileNumber % 8 != 1 && nextTileNumber % 8 != 2 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber > 0 && nextTileNumber % 8 != 1 && nextTileNumber % 8 != 2 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));
 		
 		//	1++
 		//	  +
 		nextTileNumber = currentTileNumber + 10;
-		if(nextTileNumber < 65 && nextTileNumber % 8 != 1 && nextTileNumber % 8 != 2 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber < 65 && nextTileNumber % 8 != 1 && nextTileNumber % 8 != 2 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));	
 	
 		//	+
 		//	++1
 		nextTileNumber = currentTileNumber - 10;
-		if(nextTileNumber > 0 && nextTileNumber % 8 != 0 && nextTileNumber % 8 != 7 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber > 0 && nextTileNumber % 8 != 0 && nextTileNumber % 8 != 7 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));	
 		
 		
 		//	++1
 		//	+
 		nextTileNumber = currentTileNumber + 6;
-		if(nextTileNumber < 65 && nextTileNumber % 8 != 0 && nextTileNumber % 8 != 7 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber < 65 && nextTileNumber % 8 != 0 && nextTileNumber % 8 != 7 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));			
 		
 		//	++
 		//	 +
 		//	 1
 		nextTileNumber = currentTileNumber - 17;
-		if(nextTileNumber > 0 && nextTileNumber % 8 != 0 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber > 0 && nextTileNumber % 8 != 0 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));	
 		
 		
@@ -58,7 +58,7 @@ public class Knight extends Piece{
 		//	+
 		//	1
 		nextTileNumber = currentTileNumber - 15;
-		if(nextTileNumber > 0 && nextTileNumber % 8 != 1 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber > 0 && nextTileNumber % 8 != 1 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));	
 		
 		
@@ -66,14 +66,14 @@ public class Knight extends Piece{
 		//	+ 
 		//  ++
 		nextTileNumber = currentTileNumber + 17;
-		if(nextTileNumber < 65 && nextTileNumber % 8 != 1 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber < 65 && nextTileNumber % 8 != 1 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));	
 
 		//	 1
 		//	 +
 		//	++
 		nextTileNumber = currentTileNumber + 15;
-		if(nextTileNumber < 65 && nextTileNumber % 8 != 0 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+		if(nextTileNumber < 65 && nextTileNumber % 8 != 0 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 			availableMoves.add(tilemanager.getTile(nextTileNumber));	
 		
 		for(Tile tile: availableMoves) {

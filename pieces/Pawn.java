@@ -25,14 +25,14 @@ public class Pawn extends Piece{
 		if(piececolor == piececolor.White) {
 			//	one step forward
 			nextTileNumber = currentTileNumber - 8;
-			if(nextTileNumber > 0 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+			if(nextTileNumber > 0 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 				availableMoves.add(tilemanager.getTile(nextTileNumber));
 			
 			//	two steps forward
 			if(firstMove) {
 				nextTileNumber = currentTileNumber - 16;
 				passedTileNumber = nextTileNumber + 8;
-				if(nextTileNumber > 0 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null && tilemanager.getTile(passedTileNumber).returnOccuppier() == null)
+				if(nextTileNumber > 0 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this) && tilemanager.getTile(passedTileNumber).returnOccuppier() == null)
 					availableMoves.add(tilemanager.getTile(nextTileNumber));
 			}
 			
@@ -41,14 +41,14 @@ public class Pawn extends Piece{
 		else if(piececolor == piececolor.Black) {
 			//	one step forward
 			nextTileNumber = currentTileNumber + 8;
-			if(nextTileNumber < 65 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+			if(nextTileNumber < 65 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this))
 				availableMoves.add(tilemanager.getTile(nextTileNumber));
 			
 			//	two steps forward
 			if(firstMove) {
 				nextTileNumber = currentTileNumber + 16;
 				passedTileNumber = nextTileNumber - 8;
-				if(nextTileNumber < 65 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null && tilemanager.getTile(passedTileNumber).returnOccuppier() == null)
+				if(nextTileNumber < 65 && !tilemanager.getTile(nextTileNumber).hasFriendlyPiece(this) && tilemanager.getTile(passedTileNumber).returnOccuppier() == null)
 					availableMoves.add(tilemanager.getTile(nextTileNumber));
 			}
 			
