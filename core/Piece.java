@@ -12,6 +12,7 @@ public abstract class Piece {
 	protected TileManager tilemanager;
 	protected ArrayList<Tile> availableMoves;
 	protected boolean firstMove;
+	protected boolean alive;
 	
 	public Piece(ImageIcon image, Tile tile, PieceColor piececolor, TileManager tilemanager) {
 		this.image = image;
@@ -19,12 +20,15 @@ public abstract class Piece {
 		this.piececolor = piececolor;
 		this.tilemanager = tilemanager;
 		firstMove = true;
+		alive = true;
 		availableMoves = new ArrayList<Tile>();
 	}
 	
 	public void draw(Graphics2D graphics) {
-		Point p = tile.getLocation();
-		image.paintIcon(null, graphics, p.x, p.y);
+		if(alive) {
+			Point p = tile.getLocation();
+			image.paintIcon(null, graphics, p.x, p.y);
+		}
 		
 	}
 	
@@ -48,10 +52,17 @@ public abstract class Piece {
 	}
 	
 	public abstract void showAvailableMoves();
+	
+	public void die() {
+		alive = false;
+	}
 
 	public void move(Tile t) {
 		tile = t;
-		tile.enterPiece(this);
+		if(t.returnOccuppier() != null)
+			tile.capturePiece(this);
+		else
+			tile.enterPiece(this);
 		firstMove = false;
 	}
 	

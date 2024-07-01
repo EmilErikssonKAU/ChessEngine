@@ -69,6 +69,12 @@ public class Tile {
 		occuppier = null;
 	}
 	
+	public void capturePiece(Piece piece) {
+		occuppier.die();
+		exitPiece();
+		enterPiece(piece);
+	}
+	
 	public Piece returnOccuppier() {
 		return occuppier;
 	}
@@ -102,7 +108,10 @@ public class Tile {
 				p.showAvailableMoves();
 		}
 		else if(availableMove) {
-			graphics.setColor(Color.green);
+			if(returnOccuppier() == null)
+				graphics.setColor(Color.green);
+			else
+				graphics.setColor(Color.red);
 		}
 		else if(hovered)
 			graphics.setColor(Color.yellow);
