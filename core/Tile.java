@@ -46,6 +46,7 @@ public class Tile {
 	}
 	
 	public void setSelected(boolean bool){
+		
 		selected = bool;
 		//	deselect
 		if(!selected) {

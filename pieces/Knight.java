@@ -42,7 +42,7 @@ public class Knight extends Piece{
 		
 		//	++1
 		//	+
-		nextTileNumber = currentTileNumber - 10;
+		nextTileNumber = currentTileNumber + 6;
 		if(nextTileNumber < 65 && nextTileNumber % 8 != 0 && nextTileNumber % 8 != 7 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
 			availableMoves.add(tilemanager.getTile(nextTileNumber));			
 		

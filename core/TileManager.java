@@ -97,7 +97,7 @@ public class TileManager {
 	public boolean checkForFriendlyPiece(Tile tile) {
 		if(tile.returnOccuppier() == null)
 			return false;
-		else if(tile.returnOccuppier().returnPieceColor() == PieceColor.White)
+		else if(tile.returnOccuppier().returnPieceColor() == PieceColor.White)		//temporary side selector
 			return true;
 		else
 			return false;
