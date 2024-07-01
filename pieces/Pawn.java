@@ -19,6 +19,7 @@ public class Pawn extends Piece{
 	@Override
 	public void showAvailableMoves() {
 		int currentTileNumber = tile.getTileNumber();
+		int passedTileNumber;
 		int nextTileNumber;
 		
 		if(piececolor == piececolor.White) {
@@ -30,7 +31,8 @@ public class Pawn extends Piece{
 			//	two steps forward
 			if(firstMove) {
 				nextTileNumber = currentTileNumber - 16;
-				if(nextTileNumber > 0 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+				passedTileNumber = nextTileNumber + 8;
+				if(nextTileNumber > 0 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null && tilemanager.getTile(passedTileNumber).returnOccuppier() == null)
 					availableMoves.add(tilemanager.getTile(nextTileNumber));
 			}
 			
@@ -45,7 +47,8 @@ public class Pawn extends Piece{
 			//	two steps forward
 			if(firstMove) {
 				nextTileNumber = currentTileNumber + 16;
-				if(nextTileNumber < 65 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null)
+				passedTileNumber = nextTileNumber - 8;
+				if(nextTileNumber < 65 && tilemanager.getTile(nextTileNumber).returnOccuppier() == null && tilemanager.getTile(passedTileNumber).returnOccuppier() == null)
 					availableMoves.add(tilemanager.getTile(nextTileNumber));
 			}
 			
