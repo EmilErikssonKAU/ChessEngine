@@ -42,7 +42,7 @@ public class Bishop extends Piece{
 		
 		//left-downward
 		for(int i=1; i<8; i++){
-			nextTileNumber = currentTileNumber + i*9;
+			nextTileNumber = currentTileNumber + i*7;
 			if(nextTileNumber < 65 && nextTileNumber % 8 != 0  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
 				availableMoves.add(tilemanager.getTile(nextTileNumber));
 			}
@@ -52,8 +52,8 @@ public class Bishop extends Piece{
 		
 		//right-downward
 		for(int i=1; i<8; i++){
-			nextTileNumber = currentTileNumber + i*7;
-			if(nextTileNumber < 65 && nextTileNumber % 8 != 0  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
+			nextTileNumber = currentTileNumber + i*9;
+			if(nextTileNumber < 65 && nextTileNumber % 8 != 1  && tilemanager.getTile(nextTileNumber).returnOccuppier() == null) {
 				availableMoves.add(tilemanager.getTile(nextTileNumber));
 			}
 			else

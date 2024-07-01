@@ -44,24 +44,24 @@ public class Player {
 			tile.enterPiece(piece);
 			
 			//	Bishops 
-			tile = tilemanager.getTile(58);
+			tile = tilemanager.getTile(59);
 			piece = new Bishop(w_bishop, tile, PieceColor.White, tilemanager);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
-			tile = tilemanager.getTile(63);
+			tile = tilemanager.getTile(62);
 			piece = new Bishop(w_bishop, tile, PieceColor.White, tilemanager);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			//	Knights
-			tile = tilemanager.getTile(59);
-			piece = new Bishop(w_knight, tile, PieceColor.White, tilemanager);
+			tile = tilemanager.getTile(58);
+			piece = new Knight(w_knight, tile, PieceColor.White, tilemanager);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
-			tile = tilemanager.getTile(62);
-			piece = new Bishop(w_knight, tile, PieceColor.White, tilemanager);
+			tile = tilemanager.getTile(63);
+			piece = new Knight(w_knight, tile, PieceColor.White, tilemanager);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
@@ -104,24 +104,24 @@ public class Player {
 			tile.enterPiece(piece);
 			
 			//	Bishops 
-			tile = tilemanager.getTile(2);
+			tile = tilemanager.getTile(3);
 			piece = new Bishop(b_bishop, tile, PieceColor.Black, tilemanager);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
-			tile = tilemanager.getTile(7);
+			tile = tilemanager.getTile(6);
 			piece = new Bishop(b_bishop, tile, PieceColor.Black, tilemanager);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
 			//	Knights
-			tile = tilemanager.getTile(3);
-			piece = new Bishop(b_knight, tile, PieceColor.Black, tilemanager);
+			tile = tilemanager.getTile(2);
+			piece = new Knight(b_knight, tile, PieceColor.Black, tilemanager);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
-			tile = tilemanager.getTile(6);
-			piece = new Bishop(b_knight, tile, PieceColor.Black, tilemanager);
+			tile = tilemanager.getTile(7);
+			piece = new Knight(b_knight, tile, PieceColor.Black, tilemanager);
 			pieces.add(piece);
 			tile.enterPiece(piece);
 			
