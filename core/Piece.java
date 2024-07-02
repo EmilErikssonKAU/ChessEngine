@@ -80,6 +80,7 @@ public abstract class Piece {
 	}
 
 	public void move(Tile t) {
+		tile.exitPiece();
 		tile = t;
 		if(t.returnOccuppier() != null)
 			tile.capturePiece(this);
@@ -91,6 +92,10 @@ public abstract class Piece {
 	
 	public int testMove(Tile t) {
 		return t.getOccuppierValue();
+	}
+	
+	public Tile getTile() {
+		return tile;
 	}
 	
 	public abstract void showAvailableMoves();
