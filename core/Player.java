@@ -165,10 +165,39 @@ public class Player {
 	}
 	
 	
+
+	public int returnPieceScore() {
+		//	king	- 1000
+		//	queen	- 10
+		//	rook	- 5
+		//	bishop	- 3
+		//	knight	- 3
+		//	pawn 	- 1
+		int sum = 0;
+		
+		for(Piece p: pieces) {
+			if(p instanceof King)
+				sum += 1000;
+			else if(p instanceof Queen)
+				sum += 10;
+			else if(p instanceof Rook)
+				sum += 5;
+			else if(p instanceof Bishop)
+				sum += 3;
+			else if(p instanceof Knight)
+				sum += 3;
+			else if(p instanceof Pawn)
+				sum += 1;			
+		}
+		
+		return sum;
+	}
+	
 	//	exclusive for the ai
 	//
 	
-	public void computeMove() {
+	
+	public void computeRandomMove() {
 		Random randomGenerator = new Random();
 		Piece randomPiece;
 		
@@ -182,6 +211,29 @@ public class Player {
 		
 		Tile randomMove = randomPiece.getRandomMove();
 		randomPiece.move(randomMove);
+
+	}
+	
+	public void computeMove() {
+		Piece bestPieceToMove = null;
+		TileScorePair bestMove = null;
+		TileScorePair temp = null;
+		
+		for(Piece p: pieces) {
+			p.showAvailableMoves();
+			temp = p.getBestMove();
+			
+			if(bestMove == null || bestMove.getScore() < temp.getScore()) {
+				bestMove = temp;
+				bestPieceToMove = p;
+			}
+		}
+		if(bestMove.getScore() > 0)
+			bestPieceToMove.move(bestMove.getTile());
+		else
+			computeRandomMove();
+		
+		
 	}
 	
 }

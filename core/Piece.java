@@ -54,6 +54,13 @@ public abstract class Piece {
 			return false;
 	}
 	
+	public boolean isHostile(Piece p) {
+		if(p.returnPieceColor() == this.returnPieceColor())
+			return false;
+		else
+			return true;
+	}
+	
 	public Tile getRandomMove() {
 		Random randomGenerator = new Random();
 		Tile randomMove = availableMoves.get(randomGenerator.nextInt(availableMoves.size()));
@@ -82,6 +89,26 @@ public abstract class Piece {
 		owner.passTurn();
 	}
 	
+	public int testMove(Tile t) {
+		return t.getOccuppierValue();
+	}
+	
 	public abstract void showAvailableMoves();
 	
+	public TileScorePair getBestMove() {
+		//	requires showAvailableMoves to be run beforehand
+		//	returns tile with highest value piece to capture, or null if no tile allows capture
+		Tile highestTile = null;
+		int highest = 0;
+		int test;
+		
+		for(Tile t: availableMoves) {
+			test = testMove(t);
+			if(test > highest) {
+				highest = test;
+				highestTile = t;
+			}
+		}
+		return new TileScorePair(highestTile, highest);
+	}
 }

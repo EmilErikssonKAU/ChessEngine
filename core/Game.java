@@ -46,4 +46,19 @@ public class Game {
 			gameboard.enableMouse();
 		
 	}
+	
+	public int evaluatePosition() {
+		//	white wants positive evaluation
+		//	black wants negative evaluation
+		
+		//	king	- 1000
+		//	queen	- 10
+		//	rook	- 5
+		//	bishop	- 3
+		//	knight	- 3
+		//	pawn 	- 1
+		
+		int evaluation = user.returnPieceScore() - ai.returnPieceScore();
+		return evaluation;
+	}
 }

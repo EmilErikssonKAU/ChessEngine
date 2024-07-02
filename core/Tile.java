@@ -4,6 +4,13 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import pieces.Bishop;
+import pieces.King;
+import pieces.Knight;
+import pieces.Pawn;
+import pieces.Queen;
+import pieces.Rook;
+
 public class Tile {
 	private int tileNumber;
 	private TileColor tilecolor;
@@ -75,6 +82,30 @@ public class Tile {
 		enterPiece(piece);
 	}
 	
+	public int getOccuppierValue() {
+		//	king	- 1000
+		//	queen	- 10
+		//	rook	- 5
+		//	bishop	- 3
+		//	knight	- 3
+		//	pawn 	- 1
+		
+		if(occuppier instanceof King)
+			return 1000;
+		if(occuppier instanceof Queen)
+			return 10;
+		if(occuppier instanceof Rook)
+			return 5;
+		if(occuppier instanceof Knight)
+			return 3;
+		if(occuppier instanceof Bishop)
+			return 3;
+		if(occuppier instanceof Pawn)
+			return 1;
+		return 0;	
+					
+	}
+	
 	public Piece returnOccuppier() {
 		return occuppier;
 	}
@@ -86,6 +117,16 @@ public class Tile {
 			return true;
 		else
 			return false;
+	}
+	
+	public boolean hasHostilePiece(Piece p) {
+		if(occuppier == null)
+			return false;
+		else if(occuppier.isHostile(p))
+			return true;
+		else
+			return false;
+
 	}
 	
 	public int getTileNumber() {
