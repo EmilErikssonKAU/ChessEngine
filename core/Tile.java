@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import enums.TileColor;
 import pieces.Bishop;
 import pieces.King;
 import pieces.Knight;

@@ -6,12 +6,14 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
+import enums.PieceColor;
 import pieces.Bishop;
 import pieces.King;
 import pieces.Knight;
 import pieces.Pawn;
 import pieces.Queen;
 import pieces.Rook;
+import utility.TileScorePair;
 
 public class Player {
 	private ArrayList <Piece> pieces;

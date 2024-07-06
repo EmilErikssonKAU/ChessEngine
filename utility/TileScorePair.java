@@ -1,4 +1,6 @@
-package core;
+package utility;
+
+import core.Tile;
 
 public class TileScorePair {
 	private int score;

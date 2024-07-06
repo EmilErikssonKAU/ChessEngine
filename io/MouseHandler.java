@@ -1,8 +1,10 @@
-package core;
+package io;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+
+import setup.Program;
 
 public class MouseHandler implements MouseListener, MouseMotionListener{
 	private Program program;

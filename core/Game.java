@@ -3,6 +3,9 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.*;
 
+import enums.PieceColor;
+import setup.GameBoard;
+
 public class Game {
 	private Player user;
 	private Player ai;
@@ -21,9 +24,6 @@ public class Game {
 
 	}
 
-	public void update() {
-
-	}
 
 	public void draw(Graphics2D graphics) {
 		user.draw(graphics);
@@ -47,7 +47,7 @@ public class Game {
 		
 	}
 	
-	public int evaluatePosition() {
+	public int getGameStateScore() {
 		//	white wants positive evaluation
 		//	black wants negative evaluation
 		

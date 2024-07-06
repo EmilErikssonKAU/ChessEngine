@@ -3,6 +3,9 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import enums.PieceColor;
+import enums.TileColor;
+
 public class TileManager {
 	private ArrayList <Tile> tiles;
 	private int width_tiles;

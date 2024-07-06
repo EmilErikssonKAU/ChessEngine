@@ -1,8 +1,11 @@
-package core;
+package setup;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.JComponent;
+
+import core.Game;
+import core.TileManager;
 
 public class GameBoard extends JComponent {
 	private Game game;
@@ -41,11 +44,7 @@ public class GameBoard extends JComponent {
 	public void processMouseMovement(int x, int y) {
 		tilemanager.checkHover(x,y);
 	}
-	
-	
-	public void update() {
-		game.update();
-	}
+
 	
 	public void disableMouse() {
 		mouseEnabled = false;

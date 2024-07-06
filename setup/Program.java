@@ -1,4 +1,4 @@
-package core;
+package setup;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -8,6 +8,9 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import javax.swing.*;
+
+import io.Keyboard;
+import io.MouseHandler;
 
 public class Program extends JFrame {
 	private GameBoard board;
@@ -70,7 +73,6 @@ public class Program extends JFrame {
 			}
 			
 			//	Actions
-			board.update();
 			board.repaint();
 		}
 	}

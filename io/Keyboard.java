@@ -1,6 +1,8 @@
-package core;
+package io;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
+
+import enums.Key;
 
 public class Keyboard {
 	HashMap<Key, Boolean> state;

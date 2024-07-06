@@ -6,6 +6,9 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
+import enums.PieceColor;
+import utility.TileScorePair;
+
 public abstract class Piece {
 	protected ImageIcon image;
 	protected Tile tile;

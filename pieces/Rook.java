@@ -5,10 +5,10 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import core.Piece;
-import core.PieceColor;
 import core.Player;
 import core.Tile;
 import core.TileManager;
+import enums.PieceColor;
 
 public class Rook extends Piece{
 
